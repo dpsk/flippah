@@ -9,21 +9,21 @@
 #import "FlippahViewController.h"
 
 @interface FlippahViewController ()
-
+@property (weak, nonatomic) IBOutlet UITextField *flipsLabel;
+@property (nonatomic) int flipCount;
 @end
 
 @implementation FlippahViewController
 
-- (void)viewDidLoad
+- (void) setFlipCount:(int)flipCount
 {
-    [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    _flipCount = flipCount;
+    self.flipsLabel.text = [NSString stringWithFormat:@"Flips: %d", self.flipCount];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (IBAction)flipCard:(UIButton *)sender {
+    sender.selected = !sender.isSelected;
+    self.flipCount++;
 }
 
 @end
