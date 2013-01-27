@@ -17,14 +17,14 @@
 
 @synthesize suit = _suit;
 
-+ (NSArray *) validStatus
++ (NSArray *) validSuits
 {
     return @[@"♠",@"♣",@"♥",@"♦"];
 }
 
 - (void) setSuit:(NSString *)suit
 {
-    if ([[PlayingCard validStatus] containsObject:suit]) {
+    if ([[PlayingCard validSuits] containsObject:suit]) {
         _suit = suit;
     }
 }
