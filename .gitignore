@@ -23,5 +23,5 @@ DerivedData
 *.perspectivev3
 *.pbxuser
 *.xcuserstate
-project.xcworkspace/
-xcuserdata/
+Flippah.xcodeproj/project.xcworkspace/
+Flippah.xcodeproj/xcuserdata/
