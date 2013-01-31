@@ -11,6 +11,7 @@
 		ED04EE6616B564D400E6E666 /* Deck.m in Sources */ = {isa = PBXBuildFile; fileRef = ED04EE6016B564D400E6E666 /* Deck.m */; };
 		ED04EE6716B564D400E6E666 /* PlayingCard.m in Sources */ = {isa = PBXBuildFile; fileRef = ED04EE6216B564D400E6E666 /* PlayingCard.m */; };
 		ED04EE6816B564D400E6E666 /* PlayingCardDeck.m in Sources */ = {isa = PBXBuildFile; fileRef = ED04EE6416B564D400E6E666 /* PlayingCardDeck.m */; };
+		ED7682A216BA983900545456 /* CardMatchingGame.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7682A116BA983900545456 /* CardMatchingGame.m */; };
 		EDBF8BFF16B3C4C0005A66A1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDBF8BFE16B3C4C0005A66A1 /* UIKit.framework */; };
 		EDBF8C0116B3C4C0005A66A1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDBF8C0016B3C4C0005A66A1 /* Foundation.framework */; };
 		EDBF8C0316B3C4C0005A66A1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDBF8C0216B3C4C0005A66A1 /* CoreGraphics.framework */; };
@@ -48,6 +49,8 @@
 		ED04EE6216B564D400E6E666 /* PlayingCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayingCard.m; sourceTree = "<group>"; };
 		ED04EE6316B564D400E6E666 /* PlayingCardDeck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayingCardDeck.h; sourceTree = "<group>"; };
 		ED04EE6416B564D400E6E666 /* PlayingCardDeck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayingCardDeck.m; sourceTree = "<group>"; };
+		ED7682A016BA983900545456 /* CardMatchingGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardMatchingGame.h; sourceTree = "<group>"; };
+		ED7682A116BA983900545456 /* CardMatchingGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardMatchingGame.m; sourceTree = "<group>"; };
 		EDBF8BFA16B3C4C0005A66A1 /* Flippah.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flippah.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDBF8BFE16B3C4C0005A66A1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		EDBF8C0016B3C4C0005A66A1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -99,6 +102,8 @@
 		ED04EE5C16B564D400E6E666 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				ED7682A016BA983900545456 /* CardMatchingGame.h */,
+				ED7682A116BA983900545456 /* CardMatchingGame.m */,
 				ED04EE5D16B564D400E6E666 /* Card.h */,
 				ED04EE5E16B564D400E6E666 /* Card.m */,
 				ED04EE5F16B564D400E6E666 /* Deck.h */,
@@ -306,6 +311,7 @@
 				ED04EE6616B564D400E6E666 /* Deck.m in Sources */,
 				ED04EE6716B564D400E6E666 /* PlayingCard.m in Sources */,
 				ED04EE6816B564D400E6E666 /* PlayingCardDeck.m in Sources */,
+				ED7682A216BA983900545456 /* CardMatchingGame.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
