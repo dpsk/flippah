@@ -16,7 +16,7 @@
 
 - (NSMutableArray *)cards
 {
-    if (_cards) { _cards = [[NSMutableArray init] alloc];   }
+    if (!_cards) { _cards = [[NSMutableArray alloc] init];   }
     return _cards;
 }
 
@@ -64,6 +64,7 @@
             Card *card = [deck drawRandomCard];
             if (card) {
                 self.cards[i] = card;
+                
             } else {
                 self = nil;
                 break;
