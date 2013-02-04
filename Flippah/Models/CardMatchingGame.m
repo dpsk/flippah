@@ -26,6 +26,7 @@
 
 - (void) flipCardAtIndex:(NSUInteger)index
 {
+    self.message = nil;
     Card *card = [self cardAtIndex:index];
     
     if (card && !card.isUnplayable) {
@@ -37,14 +38,18 @@
                         card.unplayable = YES;
                         otherCard.unplayable = YES;
                         self.score += matchScore * MATCH_BONUS;
+                        self.message = [NSString stringWithFormat:@"Matched %@ & %@ for %d points", card.contents, otherCard.contents, matchScore * MATCH_BONUS];
                     } else {
                         otherCard.faceUp = NO;
                         self.score -= MISMATCH_PENALTY;
+                        self.message = [NSString stringWithFormat:@"%@ and %@ don't match! %d point penalty!",
+                                        card.contents, otherCard.contents, MISMATCH_PENALTY];
                     }
                     break;
                 }
             }
             self.score -= FLIP_COST;
+            if (self.message == nil) self.message = [NSString stringWithFormat:@"Flipped up %@", card.contents];
         }
         card.faceUp = !card.faceUp;
     }

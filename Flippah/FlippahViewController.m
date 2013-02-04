@@ -9,6 +9,7 @@
 #import "FlippahViewController.h"
 #import "PlayingCardDeck.h"
 #import "CardMatchingGame.h"
+#import "Toast+UIView.h"
 
 @interface FlippahViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *flipsLabel;
@@ -43,6 +44,12 @@
         cardButton.enabled = !card.isUnplayable;
         cardButton.alpha = card.isUnplayable ? 0.3 : 1.0;
         self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", self.game.score];
+        if (self.game.message) {
+            [self.view makeToast:self.game.message
+                        duration:2.0
+                        position:@"bottom"];
+
+        }
     }
 }
 

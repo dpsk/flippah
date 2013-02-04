@@ -18,5 +18,6 @@
 - (Card *)cardAtIndex:(NSUInteger)index;
 
 @property (readonly, nonatomic) int score;
+@property (nonatomic) NSString *message;
 
 @end
