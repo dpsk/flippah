@@ -21,6 +21,15 @@
 
 @implementation FlippahViewController
 
+- (IBAction)dealButton:(id)sender {
+    self.game = nil;
+    [self.view makeToast: @"New game has been started!"
+                duration:1.5
+                position:@"top"];
+
+    [self updateUI];
+}
+
 - (CardMatchingGame *)game
 {
     if (!_game) _game = [[CardMatchingGame alloc] initWithCardCount:[self.cardButtons count]
