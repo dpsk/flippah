@@ -69,7 +69,7 @@
         self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", self.game.score];
         if (self.game.message) {
             [self.view makeToast:self.game.message
-                        duration:2.0
+                        duration:1.0
                         position:@"top"];
 
         }

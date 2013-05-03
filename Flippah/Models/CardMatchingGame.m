@@ -58,7 +58,6 @@
             
         }
         self.score -= FLIP_COST;
-        if (self.message == nil) self.message = [NSString stringWithFormat:@"Flipped up %@", card.contents];
     }
     card.faceUp = !card.faceUp;
 }
