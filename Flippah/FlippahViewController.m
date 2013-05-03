@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (nonatomic) int flipCount;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *gameModeSwitcher;
 @property (strong, nonatomic) CardMatchingGame *game;
 @end
 
@@ -27,12 +28,19 @@
                 duration:1.5
                 position:@"top"];
 
+    self.gameModeSwitcher.enabled = YES;
     [self updateUI];
+}
+
+- (IBAction)changeGameMode:(UISegmentedControl *)sender
+{
+    self.game = nil;
 }
 
 - (CardMatchingGame *)game
 {
     if (!_game) _game = [[CardMatchingGame alloc] initWithCardCount:[self.cardButtons count]
+                                                               mode:[self.gameModeSwitcher selectedSegmentIndex] + 2
                                                           usingDeck:[[PlayingCardDeck alloc] init] ];
     return _game;
 }
@@ -56,7 +64,7 @@
         if (self.game.message) {
             [self.view makeToast:self.game.message
                         duration:2.0
-                        position:@"bottom"];
+                        position:@"top"];
 
         }
     }
@@ -71,6 +79,7 @@
 - (IBAction)flipCard:(UIButton *)sender {
     [self.game flipCardAtIndex:[self.cardButtons indexOfObject:sender]];
     self.flipCount++;
+    self.gameModeSwitcher.enabled = NO;
     [self updateUI];
 }
 

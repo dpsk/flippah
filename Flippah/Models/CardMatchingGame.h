@@ -13,11 +13,13 @@
 
 // designated initializer
 - (id)initWithCardCount:(NSUInteger)count
+                   mode:(NSInteger)mode
               usingDeck:(Deck *)deck;
 - (void)flipCardAtIndex:(NSUInteger)index;
 - (Card *)cardAtIndex:(NSUInteger)index;
 
 @property (readonly, nonatomic) int score;
+@property (readonly, nonatomic) int mode;
 @property (nonatomic) NSString *message;
 
 @end

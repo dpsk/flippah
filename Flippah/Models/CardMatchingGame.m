@@ -9,6 +9,7 @@
 #import "CardMatchingGame.h"
 @interface CardMatchingGame()
 @property (readwrite, nonatomic) int score;
+@property (readwrite, nonatomic) int mode;
 @property (strong, nonatomic) NSMutableArray *cards; // of Card
 @end
 
@@ -20,7 +21,6 @@
     return _cards;
 }
 
-#define MATCH_BONUS 4
 #define MISMATCH_PENALTY 2
 #define FLIP_COST 1
 
@@ -28,32 +28,42 @@
 {
     self.message = nil;
     Card *card = [self cardAtIndex:index];
-    
+    NSMutableArray *openCards = [[NSMutableArray alloc] initWithCapacity:self.mode];
     if (card && !card.isUnplayable) {
         if (!card.isFaceUP) {
             for (Card *otherCard in self.cards) {
                 if (otherCard.isFaceUP && !otherCard.isUnplayable) {
-                    int matchScore = [otherCard match:@[card]];
-                    if (matchScore) {
-                        card.unplayable = YES;
-                        otherCard.unplayable = YES;
-                        self.score += matchScore * MATCH_BONUS;
-                        self.message = [NSString stringWithFormat:@"Matched %@ & %@ for %d points", card.contents, otherCard.contents, matchScore * MATCH_BONUS];
-                    } else {
-                        otherCard.faceUp = NO;
-                        self.score -= MISMATCH_PENALTY;
-                        self.message = [NSString stringWithFormat:@"%@ and %@ don't match! %d point penalty!",
-                                        card.contents, otherCard.contents, MISMATCH_PENALTY];
-                    }
-                    break;
+                    [openCards addObject:otherCard];
                 }
             }
-            self.score -= FLIP_COST;
-            if (self.message == nil) self.message = [NSString stringWithFormat:@"Flipped up %@", card.contents];
+            if ([openCards count] == (self.mode - 1)) {
+                int matchScore = [card match:openCards];
+                if (matchScore) {
+                    card.unplayable = YES;
+                    for (Card *card in openCards) {
+                        card.unplayable = YES;
+                    }
+                    self.score += matchScore * self.mode;
+                    self.message = [NSString stringWithFormat:@"Matched cards for %d points", matchScore * self.mode];
+                } else {
+                    for (Card *card in openCards) {
+                        card.faceUp = NO;
+                    }
+                    self.score -= MISMATCH_PENALTY;
+                    self.message = [NSString stringWithFormat:@"Cards don't match! %d point penalty!",
+                                    MISMATCH_PENALTY];
+                }
+
+            }
+            
         }
-        card.faceUp = !card.faceUp;
+        self.score -= FLIP_COST;
+        if (self.message == nil) self.message = [NSString stringWithFormat:@"Flipped up %@", card.contents];
     }
+    card.faceUp = !card.faceUp;
 }
+
+
 
 - (Card *)cardAtIndex:(NSUInteger)index
 {
@@ -61,6 +71,7 @@
 }
 
 - (id)initWithCardCount:(NSUInteger)count
+                   mode:(NSInteger)mode
               usingDeck:(Deck *)deck
 {
     self = [super init];
@@ -76,6 +87,7 @@
             }
 
         }
+        self.mode = mode;
     }
     
     return self;
