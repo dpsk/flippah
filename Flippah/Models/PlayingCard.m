@@ -14,6 +14,12 @@
 {
     return [[PlayingCard rankStrings][self.rank] stringByAppendingString:self.suit];
 }
+- (NSString *) imagePath
+{
+    return [NSString stringWithFormat:@"%@-%d.png",
+     [[PlayingCard suitDictionary] objectForKey:self.suit],
+     self.rank];
+}
 
 - (int)match:(NSArray *)otherCards
 {
@@ -59,6 +65,15 @@
 - (NSString *) suit
 {
     return _suit ? _suit : @"?";
+}
++ (NSDictionary *) suitDictionary
+{
+    return [[NSDictionary alloc] initWithObjectsAndKeys:
+            @"club", @"♠",
+            @"spade", @"♣",
+            @"heart", @"♥",
+            @"diamond", @"♦",
+            nil];
 }
 
 + (NSArray *) rankStrings

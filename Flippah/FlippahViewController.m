@@ -22,6 +22,10 @@
 
 @implementation FlippahViewController
 
+-(void)viewDidLoad {
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.jpg"]];
+    [super viewDidLoad];
+}
 - (IBAction)dealButton:(id)sender {
     self.game = nil;
     [self.view makeToast: @"New game has been started!"
@@ -55,8 +59,10 @@
 {
     for (UIButton *cardButton in self.cardButtons) {
         Card *card = [self.game cardAtIndex:[self.cardButtons indexOfObject:cardButton]];
-        [cardButton setTitle:card.contents forState:UIControlStateSelected];
-        [cardButton setTitle:card.contents forState:UIControlStateSelected|UIControlStateDisabled];
+        UIImage *cardBackImage = [UIImage imageNamed:@"card-back.png"];
+        UIImage *frontBackImage = [UIImage imageNamed: card.imagePath];
+
+        [cardButton setImage:((card.isFaceUP) ? frontBackImage  : cardBackImage) forState:UIControlStateNormal];
         cardButton.selected = card.isFaceUP;
         cardButton.enabled = !card.isUnplayable;
         cardButton.alpha = card.isUnplayable ? 0.3 : 1.0;

@@ -14,7 +14,7 @@
 
 @property (nonatomic, getter = isFaceUP) BOOL faceUp;
 @property (nonatomic, getter = isUnplayable) BOOL unplayable;
-
+@property (weak, nonatomic) NSString *imagePath;
 
 - (int)match:(NSArray *)otherCards;
 @end

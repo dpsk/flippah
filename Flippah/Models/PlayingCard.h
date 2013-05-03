@@ -14,6 +14,7 @@
 @property (nonatomic) NSUInteger rank;
 
 + (NSArray *) validSuits;
++ (NSDictionary *) suitDictionary;
 + (NSUInteger) maxRank;
 
 @end
